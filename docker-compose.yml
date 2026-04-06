@@ -113,7 +113,7 @@ services:
     volumes:
       - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
     ports:
-      - 5601:5601
+      - 8080:5601
     environment:
       KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
     networks:
@@ -122,9 +122,31 @@ services:
       - elasticsearch
     restart: unless-stopped
 
+  fleet-server:
+    image: docker.elastic.co/elastic-agent/elastic-agent:${ELASTIC_VERSION}
+    container_name: fleet-server
+    user: root
+    environment:
+      - FLEET_SERVER_ENABLE=1
+      - FLEET_SERVER_ELASTICSEARCH_HOST=http://elasticsearch:9200
+      - FLEET_SERVER_SERVICE_TOKEN=AAEAAWVsYXN0aWMvZmxlZXQtc2VydmVyL3Rva2VuLTE3NzQ1MTg4NDY1NTg6Z3BBeTNtTTBUQWk5Yms4S1locXh1dw
+      - FLEET_SERVER_POLICY_ID=fleet-server-policy
+      - FLEET_INSECURE=true
+    ports:
+      - "8220:8220"
+    networks:
+      - elk
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
 networks:
   elk:
     driver: bridge
 
+
 volumes:
   elasticsearch:
+
+
+
+

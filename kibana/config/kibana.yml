@@ -23,9 +23,9 @@ elasticsearch.password: ${KIBANA_SYSTEM_PASSWORD}
 ## https://www.elastic.co/docs/deploy-manage/security/self-setup
 ## https://www.elastic.co/docs/reference/kibana/commands/kibana-encryption-keys
 #
-#xpack.security.encryptionKey:
-#xpack.encryptedSavedObjects.encryptionKey:
-#xpack.reporting.encryptionKey:
+xpack.security.encryptionKey: "9d5a2528893a93f592901e13838472b7371ccf63985b8998b2e9b003e70049c6"
+xpack.encryptedSavedObjects.encryptionKey: "a23aa0583bff14604c7505894dd4b05400b9461188f11ecf58c34507da46735a"
+xpack.reporting.encryptionKey: "2097a72eb7f09e206e4a3c3abe9db4adae492e56151b8e325a2c5a295d677c78"
 
 ## Fleet
 ## https://www.elastic.co/docs/reference/kibana/configuration-reference/fleet-settings
@@ -97,3 +97,6 @@ xpack.fleet.agentPolicies:
                 value: 0.0.0.0:8200
               - name: url
                 value: http://apm-server:8200
+
+
+
