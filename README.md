@@ -26,7 +26,7 @@ Other available stack variants:
 > features](#how-to-disable-paid-features) section to opt out of this behaviour.
 
 ---
-
+ok
 ## tl;dr
 
 ```sh
